@@ -17,18 +17,22 @@ names = [x.split('.')[0]  for x in os.listdir('images')]
 path.sort()
 names.sort()
 
-images = [ Image.open(x) for x in path]
 
-
+with st.form('Form1'):
+    pick_img = st.radio("Which one?", 
+            names)
+    #st.selectbox('Select flavor', ['Vanilla', 'Chocolate'], key=1)
+    text_input = st.text_input(label='Any extra requirements?')
+    submit = st.form_submit_button('Submit')
 
 st.image(images,caption=names,width=200)
-with st.sidebar:
-    with st.form('Form1'):
-        pick_img = st.radio("Which one?", 
-                names)
-        #st.selectbox('Select flavor', ['Vanilla', 'Chocolate'], key=1)
-        text_input = st.text_input(label='Any extra requirements?')
-        submit = st.form_submit_button('Submit')
+# with st.sidebar:
+#     with st.form('Form1'):
+#         pick_img = st.radio("Which one?", 
+#                 names)
+#         #st.selectbox('Select flavor', ['Vanilla', 'Chocolate'], key=1)
+#         text_input = st.text_input(label='Any extra requirements?')
+#         submit = st.form_submit_button('Submit')
 gmail_user =  st.secrets["user"]
 gmail_password =  st.secrets["pwd"]
 
@@ -57,3 +61,4 @@ if submit:
     server.sendmail(FROM, TO, message)
     st.sidebar.success('Sure!(^Д^)')
     server.quit()
+images = [ Image.open(x) for x in path]

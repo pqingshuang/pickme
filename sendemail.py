@@ -12,11 +12,9 @@ import os
 
 # st.image(image, caption='Sunrise by the mountains')
 
-images = [ Image.open(os.path.join('images',x)) for x in os.listdir('images')]
-names = [x.split('.')[0]  for x in os.listdir('images')]
+images = [ Image.open(os.path.join('images',x)) for x in os.listdir('images')].sort()
+names = [x.split('.')[0]  for x in os.listdir('images')].sort()
 
-images = sort(images)
-names = sort(names)
 
 st.image(images,caption=names,width=200)
 with st.sidebar:

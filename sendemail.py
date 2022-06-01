@@ -11,8 +11,12 @@ import os
 # image = Image.open('sunrise.jpg')
 
 # st.image(image, caption='Sunrise by the mountains')
-path = list(os.listdir('images')).sort()
-images = [ Image.open(os.path.join('images',x)) for x in path]
+path = [ os.path.join('images',x) for x in os.listdir('images')].sort()
+names = [x.split('.')[0]  for x in os.listdir('images')].sort()
+
+
+
+images = [ Image.open(x) for x in path]
 names = [x.split('.')[0]  for x in path]
 
 

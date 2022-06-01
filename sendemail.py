@@ -24,6 +24,8 @@ with st.form('Form1'):
     #st.selectbox('Select flavor', ['Vanilla', 'Chocolate'], key=1)
     text_input = st.text_input(label='Any extra requirements?')
     submit = st.form_submit_button('Submit')
+    if submit:
+        st.success('Sure!(^Д^)')
 
 
 # with st.sidebar:
@@ -59,8 +61,8 @@ if submit:
     server.ehlo()
     server.login(gmail_user, gmail_password)
     server.sendmail(FROM, TO, message)
-    with st.form('Form1'):
-        st.success('Sure!(^Д^)')
+
+
     server.quit()
 
 images = [ Image.open(x) for x in path]

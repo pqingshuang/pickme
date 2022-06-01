@@ -24,8 +24,8 @@ with st.sidebar:
         #st.selectbox('Select flavor', ['Vanilla', 'Chocolate'], key=1)
         text_input = st.text_input(label='Any extra requirements?')
         submit = st.form_submit_button('Submit')
-gmail_user = 'qingshuangtocode@gmail.com'
-gmail_password = 'ddGG19960521'
+gmail_user =  st.secrets["user"]
+gmail_password =  st.secrets["pwd"]
 
 FROM = gmail_user
 

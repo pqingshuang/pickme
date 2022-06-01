@@ -15,8 +15,10 @@ import os
 images = [ Image.open(os.path.join('images',x)) for x in os.listdir('images')]
 names = [x.split('.')[0]  for x in os.listdir('images')]
 
+images = sort(images)
+names = sort(names)
 
-st.image(images,caption=names)
+st.image(images,caption=names,width=200)
 with st.sidebar:
     with st.form('Form1'):
         pick_img = st.radio("Which one?", 

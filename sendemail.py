@@ -14,34 +14,41 @@ import os
 
 images = [ Image.open(os.path.join('images',x)) for x in os.listdir('images')]
 names = [x.split('.')[0]  for x in os.listdir('images')]
-pick_img = st.sidebar.radio("Which one?", 
-           names)
+
 
 st.image(images,caption=names)
+with st.sidebar:
+    with st.form('Form1'):
+        pick_img = st.radio("Which one?", 
+                names)
+        #st.selectbox('Select flavor', ['Vanilla', 'Chocolate'], key=1)
+        text_input = st.text_input(label='Any extra requirements?')
+        submit = st.form_submit_button('Submit')
+gmail_user = 'qingshuangtocode@gmail.com'
+gmail_password = 'ddGG19960521'
+
+FROM = gmail_user
+
+TO = [gmail_user] 
+
+SUBJECT = "what you should wear"
+
+# do something with what the user selected here
+if submit:
+
+    TEXT = str(pick_img)+str(text_input)
+    message = """\
+    From: %s
+    To: %s
+    Subject: %s
+
+    %s
+    """ % (FROM, ", ".join(TO), SUBJECT, TEXT)
 
 
-FROM = 'monty@python.com'
-
-TO = ["jon@mycompany.com"] # must be a list
-
-SUBJECT = "Hello!"
-
-TEXT = "This message was sent with Python's smtplib."
-
-# Prepare actual message
-
-message = """\
-From: %s
-To: %s
-Subject: %s
-
-%s
-""" % (FROM, ", ".join(TO), SUBJECT, TEXT)
-
-
-    # do something with what the user selected here
-if pick_img:
-    server = smtplib.SMTP('localhost')
-    server.starttls()
+    server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
+    server.ehlo()
+    server.login(gmail_user, gmail_password)
     server.sendmail(FROM, TO, message)
+    st.sidebar.success('Sure!(^Д^)')
     server.quit()

@@ -25,7 +25,7 @@ with st.form('Form1'):
     text_input = st.text_input(label='Any extra requirements?')
     submit = st.form_submit_button('Submit')
 
-st.image(images,caption=names,width=200)
+
 # with st.sidebar:
 #     with st.form('Form1'):
 #         pick_img = st.radio("Which one?", 
@@ -59,6 +59,8 @@ if submit:
     server.ehlo()
     server.login(gmail_user, gmail_password)
     server.sendmail(FROM, TO, message)
-    st.sidebar.success('Sure!(^Д^)')
+    with st.form('Form1'):
+        st.success('Sure!(^Д^)')
     server.quit()
+st.image(images,caption=names,width=200)
 images = [ Image.open(x) for x in path]

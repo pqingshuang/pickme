@@ -62,5 +62,6 @@ if submit:
     with st.form('Form1'):
         st.success('Sure!(^Д^)')
     server.quit()
-st.image(images,caption=names,width=200)
+
 images = [ Image.open(x) for x in path]
+st.image(images,caption=names,width=200)

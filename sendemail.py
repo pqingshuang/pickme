@@ -19,7 +19,7 @@ names.sort()
 
 
 with st.form('Form1'):
-    pick_img = st.radio("Which one?", 
+    pick_img = st.radio("Which one do you wanna see me in tonight?", 
             names)
     #st.selectbox('Select flavor', ['Vanilla', 'Chocolate'], key=1)
     text_input = st.text_input(label='Any extra requirements?')
